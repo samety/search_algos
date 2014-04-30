@@ -17,10 +17,11 @@
     along with this program. If not, see http://www.gnu.org/licenses/.
 */
 
+#include <assert.h>
 #include "../include/binary_search.h"
 
 int main(void) {
-    const int t[] = {1, 2, 3, 4, 5}
-    if (binary_search(t, t+5, 2) == 1)
-        printf("Error on basic search");
+    const int t[] = {1, 2, 3, 4, 5};
+    assert(binary_search(t, t+5, 2) == 1);
+    return 0;
 }
