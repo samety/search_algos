@@ -3,8 +3,8 @@ exec_prefix=@prefix@
 libdir=@libdir@
 includedir=@includedir@
 
-Name: @PACKAGE_NAME@
-Version: @PACKAGE_VERSION@
+Name: libsearch_algos
+Version: @VERSION@
 Description: A sample project for autotools
 
 Libs: -L${libdir} -lsearch_algos

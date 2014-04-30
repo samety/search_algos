@@ -12,8 +12,5 @@ AC_PROG_CC
 LT_INIT
 AC_SUBST(LIBTOOL_DEPS)
 
-AS_IF([test "x$PKG_CONFIG" != "x"], [
-  AC_CONFIG_FILES([libsearch_algos.pc])
-])
-AC_CONFIG_FILES([Makefile src/Makefile tests/Makefile])
+AC_CONFIG_FILES([Makefile src/Makefile src/libsearch_algos.pc tests/Makefile])
 AC_OUTPUT

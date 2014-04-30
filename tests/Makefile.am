@@ -3,7 +3,7 @@ AM_CPPFLAGS = -I$(top_builddir)/include \
 
 LDADD = $(top_builddir)/src/libsearch_algos.la
 
-noinst_PROGRAMS = test_search.cpp
+noinst_PROGRAMS = test_search
 
 test_search_SOURCES = test_search.cpp
 
