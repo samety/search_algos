@@ -1,21 +1,19 @@
-#                                               -*- Autoconf -*-
-# Process this file with autoconf to produce a configure script.
-
 AC_PREREQ([2.69])
 AC_INIT([search_algos], [0.1], [sametyaslan@gmail.com])
-AM_INIT_AUTOMAKE([-Wall -Werror foreign])
+AM_INIT_AUTOMAKE([foreign])
 
-# Checks for programs.
+PKG_PROG_PKG_CONFIG([0.23])
+AM_CONDITIONAL([HAVE_PKG_CONFIG], [test "x$PKG_CONFIG" != "x"])
+AC_SUBST(HAVE_PKG_CONFIG)
+
 AC_PROG_CXX
 AC_PROG_CC
 
-# Checks for libraries.
+LT_INIT
+AC_SUBST(LIBTOOL_DEPS)
 
-# Checks for header files.
-
-# Checks for typedefs, structures, and compiler characteristics.
-
-# Checks for library functions.
-AC_CONFIG_HEADERS([config.h])
+AS_IF([test "x$PKG_CONFIG" != "x"], [
+  AC_CONFIG_FILES([libsearch_algos.pc])
+])
 AC_CONFIG_FILES([Makefile src/Makefile tests/Makefile])
 AC_OUTPUT

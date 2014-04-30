@@ -21,6 +21,7 @@
 Build
 INSTALL
 INSTALL
+missing
 Makefile
 Makefile
 Makefile.in
@@ -33,6 +34,8 @@ confdefs.h
 config.h*
 config.log
 config.status
+config.guess
+config.sub
 config/
 configure
 depcomp
