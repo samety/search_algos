@@ -16,14 +16,19 @@
     You should have received a copy of the GNU Lesser General Public License
     along with this program. If not, see http://www.gnu.org/licenses/.
 */
-#ifndef BINARY_SEARCH_H
-#define BINARY_SEARCH_H
 
-int binary_search(const int* p_begin, const int* p_end, const int x);
+#include <assert.h>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include "binary_search.h"
 
-typedef std::vector<int>::const_iterator Const_Iterator;
-int binary_search_2(Const_Iterator itr_begin,
-                    Const_Iterator itr_end,
-                    const int x);
-
-#endif /* BINARY_SEARCH_H */
+int main(void) {
+    const int t[] = {1, 2, 3, 4, 5};
+    std::vector<int> v(t, t+5);
+    const int p2 = std::binary_search(v.begin(), v.end(), 2);
+    const int p3 = binary_search_2(v.begin(), v.end(), 2);
+    assert(p2 == p3);
+    
+    return 0;
+}

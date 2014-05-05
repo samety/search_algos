@@ -16,7 +16,11 @@
     You should have received a copy of the GNU Lesser General Public License
     along with this program. If not, see http://www.gnu.org/licenses/.
 */
-int binary_search(const int* p_begin, const int* p_end, const int x) {
+#include <vector>
+#include "../include/binary_search.h"
+
+int binary_search(const int* p_begin, const int* p_end, const int x)
+{
     const int* p_mid = p_begin + ((p_end - p_begin) / 2);
     if ( *p_mid == x ) {
         return (p_mid - p_begin);
@@ -28,5 +32,26 @@ int binary_search(const int* p_begin, const int* p_end, const int x) {
         return binary_search(p_begin, p_mid, x);
     } else {
         return binary_search(p_mid, p_end, x) + (p_mid - p_begin);
+    }
+}
+
+
+int binary_search_2(Const_Iterator itr_begin,
+                    Const_Iterator itr_end,
+                    const int x)
+{
+    Const_Iterator itr_first = itr_begin;
+    while ( itr_begin != itr_end )
+    {
+        Const_Iterator itr_mid = itr_begin + ((itr_end - itr_begin) / 2);
+        if ( *itr_mid == x ) {
+            return itr_mid - itr_first;
+        }
+        else if ( *itr_mid > x ) {
+            itr_end = itr_mid - 1;
+        }
+        else {
+            itr_begin = itr_mid + 1;
+        }
     }
 }

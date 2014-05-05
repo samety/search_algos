@@ -18,10 +18,19 @@
 */
 
 #include <assert.h>
-#include "../include/binary_search.h"
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include "binary_search.h"
 
 int main(void) {
     const int t[] = {1, 2, 3, 4, 5};
     assert(binary_search(t, t+5, 2) == 1);
+
+    std::vector<int> v(t, t+5);
+    const int p1 = binary_search(&v[0], &v[4], 2);
+    const int p2 = std::binary_search(v.begin(), v.end(), 2);
+    assert(p1 == p2);
+
     return 0;
 }

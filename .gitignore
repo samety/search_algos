@@ -1,3 +1,4 @@
+tags
 *.gz
 *.la
 *.la
@@ -11,6 +12,7 @@
 *.tar.*
 *.zip
 *~
+*.trs
 .deps
 .dirstamp
 .done
@@ -52,4 +54,5 @@ src/Makefile
 src/Makefile.in
 src/libsearch_algos.pc
 tests/test_search
+tests/test_search_iterator
 test-driver
