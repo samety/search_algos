@@ -41,11 +41,11 @@ int binary_search_2(Const_Iterator itr_begin,
                     const int x)
 {
     Const_Iterator itr_first = itr_begin;
+    Const_Iterator itr_mid = itr_begin + ((itr_end - itr_begin) / 2);
     while ( itr_begin != itr_end )
     {
-        Const_Iterator itr_mid = itr_begin + ((itr_end - itr_begin) / 2);
         if ( *itr_mid == x ) {
-            return itr_mid - itr_first;
+            break;
         }
         else if ( *itr_mid > x ) {
             itr_end = itr_mid - 1;
@@ -53,5 +53,10 @@ int binary_search_2(Const_Iterator itr_begin,
         else {
             itr_begin = itr_mid + 1;
         }
+        itr_mid = itr_begin + ((itr_end - itr_begin) / 2);
     }
+    if ( *itr_mid == x )
+        return itr_mid - itr_first;
+    else
+        return -1;
 }

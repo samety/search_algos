@@ -18,17 +18,32 @@
 */
 
 #include <assert.h>
-#include <iostream>
 #include <vector>
 #include <algorithm>
 #include "binary_search.h"
 
+bool check_search2(const int x, const int max_value)
+{
+    std::vector<int> v;
+    for ( int i = 0 ; i < max_value ; ++i )
+        v.push_back(i);
+    Const_Iterator itr = std::lower_bound(v.begin(), v.end(), x);
+    int p2 = -1;
+    if ( itr != v.end() )
+        p2 = itr - v.begin();
+    const int p3 = binary_search_2(v.begin(), v.end(), x);
+    return p2 == p3;
+}
+
 int main(void) {
-    const int t[] = {1, 2, 3, 4, 5};
-    std::vector<int> v(t, t+5);
-    const int p2 = std::binary_search(v.begin(), v.end(), 2);
-    const int p3 = binary_search_2(v.begin(), v.end(), 2);
-    assert(p2 == p3);
+    assert(check_search2(1,10));
+    assert(check_search2(0,10));
+    assert(check_search2(9,10));
+    assert(check_search2(5,10));
+    assert(check_search2(2,5));
+    assert(check_search2(2,5001));
+    assert(check_search2(5000,5001));
+    assert(check_search2(5001,5002));
     
     return 0;
 }

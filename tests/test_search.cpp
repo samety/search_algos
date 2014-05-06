@@ -29,8 +29,7 @@ int main(void) {
 
     std::vector<int> v(t, t+5);
     const int p1 = binary_search(&v[0], &v[4], 2);
-    const int p2 = std::binary_search(v.begin(), v.end(), 2);
-    assert(p1 == p2);
+    assert(p1 == 1);
 
     return 0;
 }
