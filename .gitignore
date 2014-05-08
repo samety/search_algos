@@ -53,6 +53,6 @@ src/.libs/
 src/Makefile
 src/Makefile.in
 src/libsearch_algos.pc
-tests/test_search
-tests/test_search_iterator
+tests/test_binary_search
+tests/test_tree_search
 test-driver

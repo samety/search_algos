@@ -16,14 +16,18 @@
     You should have received a copy of the GNU Lesser General Public License
     along with this program. If not, see http://www.gnu.org/licenses/.
 */
-#ifndef BINARY_SEARCH_H
-#define BINARY_SEARCH_H
+#include "../include/search_algos.h"
 
-int binary_search(const int* p_begin, const int* p_end, const int x);
+int find_dfs(const Node* p_root, const int x, const Node* &result)
+{
+    //TODO will be implemented
+    result = p_root;
+    return 0;
+}
 
-typedef std::vector<int>::const_iterator Const_Iterator;
-int binary_search_2(Const_Iterator itr_begin,
-                    Const_Iterator itr_end,
-                    const int x);
-
-#endif /* BINARY_SEARCH_H */
+int find_bfs(const Node* p_root, const int x, const Node* &result)
+{
+    //TODO will be implemented
+    result = p_root;
+    return 0;
+}

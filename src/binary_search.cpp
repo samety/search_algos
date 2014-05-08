@@ -17,7 +17,7 @@
     along with this program. If not, see http://www.gnu.org/licenses/.
 */
 #include <vector>
-#include "../include/binary_search.h"
+#include "../include/search_algos.h"
 
 int binary_search(const int* p_begin, const int* p_end, const int x)
 {
