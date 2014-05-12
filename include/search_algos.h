@@ -29,14 +29,14 @@ int binary_search_2(Const_Iterator itr_begin,
 
 struct Node
 {
-    Node(const Node* c1, const Node* c2, const int value)
+    Node(const Node* c1, const Node* c2, const char value)
     {
         p_child1 = c1;
         p_child2 = c2;
         data = value;
     }
 
-    int data;
+    char data;
     const Node* p_child1;
     const Node* p_child2;
 };

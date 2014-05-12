@@ -17,17 +17,53 @@
     along with this program. If not, see http://www.gnu.org/licenses/.
 */
 #include "../include/search_algos.h"
+#include <stack>
+#include <queue>
 
 int find_dfs(const Node* p_root, const int x, const Node* &result)
 {
-    //TODO will be implemented
-    result = p_root;
-    return 0;
+    int num_of_visits = 0;
+    std::stack<const Node*> nodes;
+    nodes.push(p_root);
+    while (!nodes.empty())
+    {
+        num_of_visits++;
+        const Node* p_current = nodes.top();
+        if ( p_current->data == x ) {
+            result = p_current;
+            break;
+        }
+        else {
+            nodes.pop();
+            if ( p_current->p_child2 )
+                nodes.push(p_current->p_child2);
+            if ( p_current->p_child1 )
+                nodes.push(p_current->p_child1);
+        }
+    }
+    return num_of_visits;
 }
 
 int find_bfs(const Node* p_root, const int x, const Node* &result)
 {
-    //TODO will be implemented
-    result = p_root;
-    return 0;
+    int num_of_visits = 0;
+    std::queue<const Node*> nodes;
+    nodes.push(p_root);
+    while (!nodes.empty())
+    {
+        num_of_visits++;
+        const Node* p_current = nodes.front();
+        if ( p_current->data == x ) {
+            result = p_current;
+            break;
+        }
+        else {
+            nodes.pop();
+            if ( p_current->p_child1 )
+                nodes.push(p_current->p_child1);
+            if ( p_current->p_child2 )
+                nodes.push(p_current->p_child2);
+        }
+    }
+    return num_of_visits;
 }

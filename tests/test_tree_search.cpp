@@ -21,15 +21,44 @@
 #include <cstdio>
 #include "search_algos.h"
 
-int main(void) {
-    Node n1(NULL, NULL, 1);
-    const Node* result = NULL;
-    int num_of_visited = find_dfs(&n1, 1, result);
-    assert(num_of_visited == 0);
-    assert(&n1 == result);
+typedef int (*Search_Func)(const Node* p_root, const int x, const Node* &result);
 
-    num_of_visited = find_bfs(&n1, 1, result);
-    assert(num_of_visited == 0);
-    assert(&n1 == result);
+bool check(const Node* n_root, const char x, Search_Func f_search, const int n_visits)
+{
+    const Node* result = NULL;
+    int num_of_visits = f_search(n_root, x, result);
+    return (num_of_visits == n_visits) && (result->data == x);
+}
+
+int main(void) {
+    //A--B--C--D
+    // \
+    //  -E--F
+    //    \
+    //     -G
+    Node n_d(NULL, NULL, 'D');
+    Node n_c(&n_d, NULL, 'C');
+    Node n_b(&n_c, NULL, 'B');
+    Node n_g(NULL, NULL, 'G');
+    Node n_f(NULL, NULL, 'F');
+    Node n_e(&n_f, &n_g, 'E');
+    Node n_a(&n_b, &n_e, 'A');
+
+    assert(check(&n_a, 'A', find_dfs, 1));
+    assert(check(&n_a, 'B', find_dfs, 2));
+    assert(check(&n_a, 'C', find_dfs, 3));
+    assert(check(&n_a, 'D', find_dfs, 4));
+    assert(check(&n_a, 'E', find_dfs, 5));
+    assert(check(&n_a, 'F', find_dfs, 6));
+    assert(check(&n_a, 'G', find_dfs, 7));
+
+    assert(check(&n_a, 'A', find_bfs, 1));
+    assert(check(&n_a, 'B', find_bfs, 2));
+    assert(check(&n_a, 'C', find_bfs, 4));
+    assert(check(&n_a, 'D', find_bfs, 7));
+    assert(check(&n_a, 'E', find_bfs, 3));
+    assert(check(&n_a, 'F', find_bfs, 5));
+    assert(check(&n_a, 'G', find_bfs, 6));
+
     return 0;
 }
